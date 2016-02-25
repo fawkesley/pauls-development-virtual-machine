@@ -46,12 +46,13 @@ configure_ack() {
     sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
 }
 
-install_bashrc_symlink() {
+install_symlinks() {
     ln -sf /vagrant/config/bashrc /home/vagrant/.bashrc
+    ln -sf /vagrant/config/pip.conf /home/vagrant/.pip/pip.conf
 }
 
 
-install_bashrc_symlink
+install_symlinks
 install_extra_ppas
 update_package_index
 install_required_packages
