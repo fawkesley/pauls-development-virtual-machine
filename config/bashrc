@@ -1,0 +1,1 @@
+alias activate='test -f "${PWD}/.venv/bin/activate" && . "${PWD}/.venv/bin/activate"'
