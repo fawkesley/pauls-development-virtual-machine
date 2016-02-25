@@ -30,6 +30,7 @@ install_required_packages() {
 	libxslt1-dev \
 	libfreetype6-dev \
 	libimage-exiftool-perl \
+	libjpeg-dev \
 	postgresql \
 	heroku-toolbelt \
 	xclip \
