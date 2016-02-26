@@ -41,7 +41,8 @@ install_required_packages() {
 	gnupg-curl \
 	python-flake8 \
 	python-virtualenv \
-	virtualenvwrapper
+	virtualenvwrapper \
+	imagemagick
 }
 
 configure_ack() {
