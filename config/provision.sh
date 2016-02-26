@@ -27,6 +27,7 @@ install_required_packages() {
 	python-dev \
 	python3-dev \
 	libxml2-dev \
+	libyaml-dev \
 	libxslt1-dev \
 	libffi-dev \
 	libfreetype6-dev \
