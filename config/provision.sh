@@ -28,6 +28,7 @@ install_required_packages() {
 	python3-dev \
 	libxml2-dev \
 	libxslt1-dev \
+	libffi-dev \
 	libfreetype6-dev \
 	libimage-exiftool-perl \
 	libjpeg-dev \
