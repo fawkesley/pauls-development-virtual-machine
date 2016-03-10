@@ -43,7 +43,8 @@ install_required_packages() {
 	python-flake8 \
 	python-virtualenv \
 	virtualenvwrapper \
-	imagemagick
+	imagemagick \
+	yui-compressor
 }
 
 configure_ack() {
