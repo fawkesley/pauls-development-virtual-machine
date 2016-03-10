@@ -1,4 +1,4 @@
 alias activate='test -f "${PWD}/.venv/bin/activate" && . "${PWD}/.venv/bin/activate"'
-alias makevenv='virtualenv .venv && . .venv/bin/activate && pip install -r requirements.txt'
+alias makevenv='virtualenv -p $(which python3) .venv && . .venv/bin/activate && pip install -r requirements.txt'
 
 alias ll="ls -al"
