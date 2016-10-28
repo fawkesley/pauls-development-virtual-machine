@@ -6,6 +6,10 @@ install_extra_ppas() {
 
     # install heroku's release key for package verification
     wget -q -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+
+    # Elixir / Erlang from erlang-solutions.com
+    echo 'deb https://packages.erlang-solutions.com/ubuntu trusty contrib' > /etc/apt/sources.list.d/erlang_solutions.list
+    wget -q -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | apt-key add -
 }
 
 update_package_index() {
@@ -44,6 +48,8 @@ install_required_packages() {
 	python-virtualenv \
 	virtualenvwrapper \
 	imagemagick \
+	clang \
+	libicu-dev \
 	yui-compressor
 }
 
@@ -53,7 +59,33 @@ configure_ack() {
 
 install_symlinks() {
     ln -sf /vagrant/config/bashrc /home/vagrant/.bashrc
-    ln -sf /vagrant/config/pip.conf /home/vagrant/.pip/pip.conf
+}
+
+atomic_download() {
+    URL=$1
+    DEST=$2
+
+    TMP="$(tempfile)"
+
+    wget -qO "${TMP}" "${URL}" && mv "${TMP}" "${DEST}"
+}
+
+install_swift() {
+    SWIFT_TARBALL=/tmp/download/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz
+    SWIFT_URL=https://swift.org/builds/swift-2.2.1-release/ubuntu1404/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz
+
+    if [ ! -f "${SWIFT_TARBALL}" ]; then
+	atomic_download "${SWIFT_URL}" "${SWIFT_TARBALL}"
+    fi
+
+    mkdir -p /opt/swift
+    tar --directory /opt/swift/ --extract --strip-components=2 -f "${SWIFT_TARBALL}"
+
+    cp /vagrant/config/etc/profile.d/swift.sh /etc/profile.d/swift.sh
+}
+
+install_elixir_erlang() {
+    apt-get install -y esl-erlang elixir
 }
 
 
@@ -62,3 +94,5 @@ install_extra_ppas
 update_package_index
 install_required_packages
 configure_ack
+install_swift
+install_elixir_erlang
