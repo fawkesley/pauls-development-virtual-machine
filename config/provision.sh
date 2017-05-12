@@ -86,6 +86,26 @@ install_elixir_erlang() {
     apt-get install -y esl-erlang elixir
 }
 
+install_protobuf_3() {
+    PROTOBUF_ZIP=/tmp/download/protoc-3.0.0-linux-x86_64.zip
+    PROTOBUF_URL=https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip
+
+
+    if [ ! -f "${PROTOBUF_ZIP}" ]; then
+	atomic_download "${PROTOBUF_URL}" "${PROTOBUF_ZIP}"
+    fi
+
+    mkdir -p /opt/protobuf
+
+    pushd /opt/protobuf
+    unzip -o "${PROTOBUF_ZIP}"
+    popd
+
+    chown -R vagrant /opt/protobuf
+
+    cp /vagrant/config/etc/profile.d/protobuf.sh /etc/profile.d/protobuf.sh
+}
+
 install_latest_node_v7() {
     curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
     sudo apt-get install -y nodejs
@@ -100,6 +120,7 @@ install_symlinks
 install_extra_ppas
 update_package_index
 install_required_packages
+install_protobuf_3
 configure_ack
 install_swift
 install_elixir_erlang
