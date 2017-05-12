@@ -41,8 +41,6 @@ install_required_packages() {
 	heroku-toolbelt \
 	xclip \
 	markdown \
-	nodejs-legacy \
-	npm \
 	gnupg-curl \
 	python-flake8 \
 	python-virtualenv \
@@ -88,6 +86,15 @@ install_elixir_erlang() {
     apt-get install -y esl-erlang elixir
 }
 
+install_latest_node_v7() {
+    curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+}
+
+install_gulp_globally() {
+    npm install --global gulp
+}
+
 
 install_symlinks
 install_extra_ppas
@@ -96,3 +103,5 @@ install_required_packages
 configure_ack
 install_swift
 install_elixir_erlang
+install_latest_node_v7
+install_gulp_globally
