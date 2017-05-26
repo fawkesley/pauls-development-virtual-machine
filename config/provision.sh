@@ -143,6 +143,14 @@ install_ruby_build() {
     chown -R vagrant "${RUBY_BUILD_DIR}"
 }
 
+install_ruby_2_3_3() {
+    apt install -y libreadline-dev
+    run_as_vagrant "rbenv install 2.3.3"
+}
+
+run_as_vagrant() {
+  su vagrant bash -l -c "$1"
+}
 
 
 install_symlinks
@@ -157,3 +165,4 @@ install_latest_node_v7
 install_gulp_globally
 install_ruby_rbenv
 install_ruby_build
+install_ruby_2_3_3
