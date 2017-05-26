@@ -115,6 +115,35 @@ install_gulp_globally() {
     npm install --global gulp
 }
 
+install_ruby_rbenv() {
+    RBENV_DIR=/home/vagrant/.rbenv
+
+    if [ -d "${RBENV_DIR}" ]; then
+	cd "${RBENV_DIR}"
+	git pull
+	cd -
+    else
+	git clone https://github.com/rbenv/rbenv.git "${RBENV_DIR}"
+    fi
+
+    chown -R vagrant "${RBENV_DIR}"
+}
+
+install_ruby_build() {
+    RUBY_BUILD_DIR=/home/vagrant/.rbenv/plugins/ruby-build
+
+    if [ -d "${RUBY_BUILD_DIR}" ]; then
+	cd "${RUBY_BUILD_DIR}"
+	git pull
+	cd -
+    else
+	git clone https://github.com/rbenv/ruby-build.git "${RUBY_BUILD_DIR}"
+    fi
+
+    chown -R vagrant "${RUBY_BUILD_DIR}"
+}
+
+
 
 install_symlinks
 install_extra_ppas
@@ -126,3 +155,5 @@ install_swift
 install_elixir_erlang
 install_latest_node_v7
 install_gulp_globally
+install_ruby_rbenv
+install_ruby_build
