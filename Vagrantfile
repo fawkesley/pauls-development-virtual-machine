@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "../greendragon", "/home/vagrant/greendragon"
   config.vm.synced_folder "../coop", "/home/vagrant/coop"
   config.vm.synced_folder "../repo", "/home/vagrant/repo"
-  config.vm.synced_folder "./.cache/apt", "/var/cache/apt/archives"
+  config.vm.synced_folder "~/.cache/vagrant-apt-archives", "/var/cache/apt/archives"
   config.vm.synced_folder "./.cache/tmp_download", "/tmp/download"
 
   # The url from where the 'config.vm.box' box will be fetched if it
