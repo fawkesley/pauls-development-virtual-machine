@@ -25,6 +25,7 @@ install_required_packages() {
 	htop \
 	whois \
 	ack-grep \
+        dos2unix \
 	sqlite3 \
 	run-one \
 	libpq-dev \
@@ -37,6 +38,7 @@ install_required_packages() {
 	libfreetype6-dev \
 	libimage-exiftool-perl \
 	libjpeg-dev \
+	nfs-common \
 	postgresql \
 	heroku-toolbelt \
 	xclip \
@@ -48,7 +50,8 @@ install_required_packages() {
 	imagemagick \
 	clang \
 	libicu-dev \
-	yui-compressor
+	yui-compressor \
+        libreadline-dev
 }
 
 configure_ack() {
@@ -144,7 +147,6 @@ install_ruby_build() {
 }
 
 install_ruby_2_3_3() {
-    apt install -y libreadline-dev
     run_as_vagrant "rbenv install 2.3.3"
 }
 
