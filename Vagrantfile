@@ -54,7 +54,7 @@ config.vm.provider :virtualbox do |vb|
   # vb.gui = true
 
   # Use VBoxManage to customize the VM. For example to change memory:
-  vb.customize ["modifyvm", :id, "--memory", "2048"]
+  vb.customize ["modifyvm", :id, "--memory", "1024"]
 end
 
   config.vm.provision "shell", path: "config/provision.sh"
