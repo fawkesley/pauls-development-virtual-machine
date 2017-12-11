@@ -60,6 +60,7 @@ configure_ack() {
 
 install_symlinks() {
     ln -sf /vagrant/config/bashrc /home/vagrant/.bashrc
+    ln -sf /vagrant/config/ssh /home/vagrant/.ssh
 }
 
 atomic_download() {
