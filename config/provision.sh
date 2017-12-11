@@ -150,6 +150,10 @@ install_ruby_2_3_3() {
     run_as_vagrant "rbenv install 2.3.3"
 }
 
+install_ruby_2_4_1() {
+    run_as_vagrant "rbenv install 2.4.1"
+}
+
 run_as_vagrant() {
   su vagrant bash -l -c "$1"
 }
@@ -168,3 +172,4 @@ install_gulp_globally
 install_ruby_rbenv
 install_ruby_build
 install_ruby_2_3_3
+install_ruby_2_4_1
