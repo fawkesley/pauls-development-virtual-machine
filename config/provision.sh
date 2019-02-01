@@ -22,6 +22,7 @@ install_required_packages() {
 	tree \
 	zip \
 	unzip \
+	firejail \
 	htop \
 	whois \
 	ack-grep \
