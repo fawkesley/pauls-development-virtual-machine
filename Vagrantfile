@@ -15,8 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.synced_folder "../greendragon", "/home/vagrant/greendragon"
   config.vm.synced_folder "../repo", "/home/vagrant/repo"
-  config.vm.synced_folder "~/.cache/vagrant-apt-archives", "/var/cache/apt/archives"
-  config.vm.synced_folder "./.cache/tmp_download", "/tmp/download"
+  config.vm.synced_folder "~/.cache/vagrant-apt-archives", "/var/cache/apt/archives", create: true
+  config.vm.synced_folder "./.cache/tmp_download", "/tmp/download", create: true
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
