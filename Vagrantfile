@@ -12,7 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'paulfurley-dev'
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.synced_folder "../greendragon", "/home/vagrant/greendragon"
   config.vm.box = "ubuntu/xenial64"
   config.vm.synced_folder "../repo", "/home/vagrant/repo"
   config.vm.synced_folder "~/.cache/vagrant-apt-archives", "/var/cache/apt/archives", create: true
