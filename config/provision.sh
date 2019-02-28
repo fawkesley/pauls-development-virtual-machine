@@ -39,6 +39,7 @@ install_required_packages() {
 	libfreetype6-dev \
 	libimage-exiftool-perl \
 	libjpeg-dev \
+	make \
 	nfs-common \
 	postgresql \
 	heroku-toolbelt \
