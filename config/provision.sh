@@ -74,44 +74,6 @@ atomic_download() {
     wget -qO "${TMP}" "${URL}" && mv "${TMP}" "${DEST}"
 }
 
-install_swift() {
-    SWIFT_TARBALL=/tmp/download/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz
-    SWIFT_URL=https://swift.org/builds/swift-2.2.1-release/ubuntu1404/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz
-
-    if [ ! -f "${SWIFT_TARBALL}" ]; then
-	atomic_download "${SWIFT_URL}" "${SWIFT_TARBALL}"
-    fi
-
-    mkdir -p /opt/swift
-    tar --directory /opt/swift/ --extract --strip-components=2 -f "${SWIFT_TARBALL}"
-
-    cp /vagrant/config/etc/profile.d/swift.sh /etc/profile.d/swift.sh
-}
-
-install_elixir_erlang() {
-    apt-get install -y esl-erlang elixir
-}
-
-install_protobuf_3() {
-    PROTOBUF_ZIP=/tmp/download/protoc-3.0.0-linux-x86_64.zip
-    PROTOBUF_URL=https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip
-
-
-    if [ ! -f "${PROTOBUF_ZIP}" ]; then
-	atomic_download "${PROTOBUF_URL}" "${PROTOBUF_ZIP}"
-    fi
-
-    mkdir -p /opt/protobuf
-
-    pushd /opt/protobuf
-    unzip -o "${PROTOBUF_ZIP}"
-    popd
-
-    chown -R vagrant /opt/protobuf
-
-    cp /vagrant/config/etc/profile.d/protobuf.sh /etc/profile.d/protobuf.sh
-}
-
 install_latest_node_v7() {
     curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
     sudo apt-get install -y nodejs
@@ -149,12 +111,8 @@ install_ruby_build() {
     chown -R vagrant "${RUBY_BUILD_DIR}"
 }
 
-install_ruby_2_3_3() {
-    run_as_vagrant "rbenv install 2.3.3"
-}
-
-install_ruby_2_4_1() {
-    run_as_vagrant "rbenv install 2.4.1"
+install_ruby_2_4_2() {
+    run_as_vagrant "rbenv install 2.4.2"
 }
 
 run_as_vagrant() {
@@ -166,13 +124,11 @@ install_symlinks
 install_extra_ppas
 update_package_index
 install_required_packages
-install_protobuf_3
-configure_ack
-install_swift
-install_elixir_erlang
-install_latest_node_v7
-install_gulp_globally
+# configure_ack
+# install_latest_node_v7
+# install_gulp_globally
 install_ruby_rbenv
 install_ruby_build
-install_ruby_2_3_3
-install_ruby_2_4_1
+install_ruby_2_4_2
+
+echo "Done."
