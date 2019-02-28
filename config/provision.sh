@@ -115,6 +115,10 @@ install_ruby_2_4_2() {
     run_as_vagrant "rbenv install 2.4.2"
 }
 
+install_bundler() {
+  run_as_vagrant "gem install bundle"
+}
+
 run_as_vagrant() {
   su vagrant bash -l -c "$1"
 }
@@ -130,5 +134,6 @@ install_required_packages
 install_ruby_rbenv
 install_ruby_build
 install_ruby_2_4_2
+install_bundler
 
 echo "Done."
