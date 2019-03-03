@@ -45,7 +45,6 @@ install_required_packages() {
 	heroku-toolbelt \
 	xclip \
 	markdown \
-	gnupg-curl \
 	python-flake8 \
 	python-virtualenv \
 	virtualenvwrapper \
