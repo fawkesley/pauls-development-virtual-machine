@@ -130,6 +130,10 @@ install_ruby_2_4_2() {
     run_as_vagrant "rbenv install 2.4.2 || true"
 }
 
+set_ruby_2_4_2_as_global() {
+    run_as_vagrant "rbenv global 2.4.2"
+}
+
 install_bundler() {
   run_as_vagrant "gem install bundle"
 }
@@ -150,6 +154,7 @@ install_golang_1_10_4
 install_ruby_rbenv
 install_ruby_build
 install_ruby_2_4_2
+set_ruby_2_4_2_as_global
 install_bundler
 
 echo "Done."
