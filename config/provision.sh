@@ -127,7 +127,7 @@ install_ruby_build() {
 }
 
 install_ruby_2_4_2() {
-    run_as_vagrant "rbenv install 2.4.2"
+    run_as_vagrant "rbenv install 2.4.2 || true"
 }
 
 install_bundler() {
