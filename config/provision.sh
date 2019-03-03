@@ -74,6 +74,22 @@ atomic_download() {
     wget -qO "${TMP}" "${URL}" && mv "${TMP}" "${DEST}"
 }
 
+
+install_golang_1_10_4() {
+    GO_TARBALL=/tmp/download/go1.10.4.linux-amd64.tar.gz
+    GO_URL=https://dl.google.com/go/go1.10.4.linux-amd64.tar.gz
+
+    if [ ! -f "${GO_TARBALL}" ]; then
+	atomic_download "${GO_URL}" "${GO_TARBALL}"
+    fi
+
+    mkdir -p /opt/go
+    # tarball paths start go/...
+    tar --directory /opt --extract -f "${GO_TARBALL}"
+
+    cp /vagrant/config/etc/profile.d/golang.sh /etc/profile.d/golang.sh
+}
+
 install_latest_node_v7() {
     curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
     sudo apt-get install -y nodejs
@@ -131,6 +147,7 @@ install_required_packages
 # configure_ack
 # install_latest_node_v7
 # install_gulp_globally
+install_golang_1_10_4
 install_ruby_rbenv
 install_ruby_build
 install_ruby_2_4_2
