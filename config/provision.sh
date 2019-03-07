@@ -90,6 +90,10 @@ install_golang_1_10_4() {
     cp /vagrant/config/etc/profile.d/golang.sh /etc/profile.d/golang.sh
 }
 
+install_hugo() {
+  sudo snap install hugo --channel=extended
+}
+
 install_latest_node_v7() {
     curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
     sudo apt-get install -y nodejs
@@ -152,6 +156,7 @@ install_required_packages
 # install_latest_node_v7
 # install_gulp_globally
 install_golang_1_10_4
+install_hugo
 install_ruby_rbenv
 install_ruby_build
 install_ruby_2_4_2
