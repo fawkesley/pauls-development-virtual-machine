@@ -19,6 +19,7 @@ update_package_index() {
 install_required_packages() {
     sudo apt-get install -y \
 	git \
+	g++ \
 	tree \
 	zip \
 	unzip \
